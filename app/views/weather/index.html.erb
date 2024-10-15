@@ -1,0 +1,35 @@
+<%= flash[:notice] %>
+<%= flash[:error] %>
+
+<%= form_with url: weather_index_path, method: :get do %>
+  <div>
+    <%= label_tag :address, "Enter Address:" %>
+    <%= text_field_tag :address, params[:address], required: true %>
+  </div>
+  <div>
+    <%= submit_tag "Get Weather" %>
+  </div>
+<% end %>
+
+<% if @current_weather&.success? %>
+<h1>Current Weather for <%= @current_weather['name'] %></h1>
+  <p>Temperature: <%= @current_weather['main']['temp'] %>°F</p>
+  <p>High: <%= @current_weather['main']['temp_max'] %>°F</p>
+  <p>Low: <%= @current_weather['main']['temp_min'] %>°F</p>
+
+  <h2>5-Day Extended Forecast</h2>
+
+	<% if @extended_forecast&.success? %>
+	  <ul>
+	    <% @extended_forecast['list'].each do |forecast| %>
+	      <li>
+	        <%= forecast['dt_txt'] %>:
+	        <%= forecast['main']['temp'] %>°F,
+	        <%= forecast['weather'][0]['description'].capitalize %>
+	      </li>
+	    <% end %>
+	  </ul>
+	<% else %>
+	  <p>Unable to get extended forecast data.</p>
+  <% end %>
+<% end %>
