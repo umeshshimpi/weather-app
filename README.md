@@ -9,7 +9,6 @@ Key features:
 * 5-Day Extended Forecast: Displays the weather forecast for the next 5 days, including date, temperature, and weather conditions.
 * Caching: Weather data is cached for numeric addresses (such as zip codes) to reduce the number of API calls and improve performance.
 
-
 Caching Behavior
 
 * If a numeric address (e.g., zip code) is provided, the current weather data and extended forecast are cached for 30 minutes.
@@ -20,3 +19,14 @@ Dependencies
 * Ruby on Rails
 * [HTTParty](https://github.com/jnunemaker/httparty) for API requests
 * [OpenWeatherMap](https://openweathermap.org/api)
+
+## Sample Execution:
+
+* Weather data by address:  
+  <img src="https://github.com/user-attachments/assets/f9d877a1-cefc-4950-be3e-b5e476adf37f" alt="screenshot" width="200">
+
+* Weather data by zipcode:  
+  <img src="https://github.com/user-attachments/assets/fc67e020-6729-4f56-8dcd-995c959cdabf" alt="screenshot" width="200">
+
+* Caching when same zipcode provided:  
+  <img src="https://github.com/user-attachments/assets/e60e14aa-72c8-4df1-adbf-f0fad101a925" alt="screenshot" width="200">
